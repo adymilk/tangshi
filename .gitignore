@@ -1,0 +1,6 @@
+node_modules/
+disk/
+public/
+urls.txt
+test.*
+gulpfile.js
