@@ -5,18 +5,27 @@
 <head>
 	<title>古诗词检索系统</title>
 	<?php include './comm/head.php'; ?>
-	<script type="text/javascript" src="./js/bootstrap-paginator.min.js"></script>
+	<!-- <script type="text/javascript" src="./js/bootstrap-paginator.min.js"></script> -->
 </head>
+<?php
+$user_text = '';
+if (isset($_GET['text'])) {
+	$user_text = $_GET['text'];
+}
+ ?>
 <body>
+<div class="ad">
+	
+</div>
 <div class="container">
 <div style="text-align: center;" id="logo">
-	<a href="./index.php"><img></a>
+	<a href="./index.php"><img src="./images/logo.jpg"></a>
 </div>
 	<h2 align="center">古诗词检索系统</h2>
 
 			<form action="" method="get" style="text-align: center;">
 			<div id="s">
-				<input id="s_ipt" type="text" name="text" class="form-control btn-lg" placeholder="关键词（诗名/作者/古诗句）" style="display: inline; width: 70%;padding: 23px 5px; font-size: 1em">
+				<input id="s_ipt" type="text" name="text" class="form-control btn-lg" placeholder="关键词（诗名/作者/古诗句）" style="display: inline; width: 70%;padding: 23px 5px; font-size: 1em" value="<?php echo $user_text; ?>">
 				<input id="s_btn" type="submit" name="submit" value="搜索" class="btn btn-primary btn-lg" style="font-size: 1.4em"><br/>
 			</div>
 					
@@ -44,7 +53,7 @@
 						});
 			</script>";
 		// 点击搜索按钮的情况
-		$user_text = $_GET['text'];
+		
         $firstPage = '1';
         $curPage = '1';
         $limit = '10';
@@ -58,13 +67,13 @@
             ($totalPage > 10)?$totalPage=10:$totalPage;
         }else{
             $totalPage = 1;
-            var_dump($totalPage);
+            // var_dump($totalPage);
         }
         if (isset($_GET['pageNum']) && $_GET['pageNum'] < $totalPage) {
             $pageNum = $_GET['pageNum'];
             $offset = ($pageNum - 1) * 10;
         }
-        $sql = "select * from poetries inner join poets on poetries.poet_id = poets.id where poets.name='$user_text' or title like'%$user_text%' or content like'%$user_text%' order by poetries.updated_at desc limit $offset,10";
+        $sql = "select * from poetries inner join poets on poetries.poet_id = poets.id where poets.name='$user_text' or title like'%$user_text%' or content like'%$user_text%' order by poetries.updated_at desc limit $offset,15";
         $list = mysql_query($sql);
         
 		
@@ -133,7 +142,7 @@
     <div class="fbar navbar-fixed-bottom">
     	<div class="container">
     		<span id="fl"><a href="#">诗词地理</a></span>
-    		<span id="fl"><a href="#">诗词大全</a></span>
+    		<span id="fl"><a href="./test.php">新华字典</a></span>
     		<span id="fr"><a href="./about.php">关于本站</a></span>
     		<span id="fr"><a href="#">隐私权</a></span>
     	</div>

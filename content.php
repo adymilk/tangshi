@@ -43,7 +43,7 @@ include './config/init.php';
         	// 判断查询字段是否为null
         	if (empty($row['translate'])) {
 
-        		echo "<p style=text-align:center>此作品相关尚未添加，才华横溢的你愿意帮助我们完善这首诗吗？</p><br/><button class='btn btn-primary' data-toggle='modal' data-target='#layer'>添加</button>";
+        		echo "<p style=text-align:center>此作品相关尚未添加</p><br/><button class='btn btn-primary' data-toggle='modal' data-target='#layer'>添加</button>";
         	}else{
                 $strs = $row['translate'];
                 $strs = str_replace("。", "。<br />", $row['translate']);

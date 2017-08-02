@@ -11,23 +11,21 @@
 	<script type="text/javascript" src="../js/jquery.min.js"></script>
 	<script type="text/javascript" src='../js/bootstrap.min.js'></script>
 	<script type="text/javascript" src='../js/index.js'></script>
-	<script>
-		// $(document).ready(function(){
-		// 	function reload() {
-		// 		window.location.reload();
-		// 	}
-		// });
-	</script>
 </head>
 <body>
-
+<?php 
+$user_text = '';
+if (isset($_GET['submit'])) {
+	$user_text = $_GET['text'];
+}
+ ?>
 <div class="container">
 <div style="text-align: center;" id="logo">
 	<a href="./adymilk.php"><img></a>
 </div>
 	<h2 align="center">古诗词检索系统</h2>
 			<form action="" method="get" style="text-align: center;">
-				<input id="s_ipt" type="text" name="text" class="form-control btn-lg" placeholder="关键词（诗名/作者/古诗句）" style="display: inline; width: 70%;padding: 23px 5px; font-size: 1em">
+				<input id="s_ipt" type="text" name="text" class="form-control btn-lg" placeholder="关键词（诗名/作者/古诗句）" style="display: inline; width: 70%;padding: 23px 5px; font-size: 1em" value="<?php echo $user_text; ?>">
 					<input id="s_btn" type="submit" name="submit" value="搜索" class="btn btn-primary btn-lg" style="font-size: 1.4em"><br/>
 					<p id="sm-btn">
 					<button type="button" class="btn btn-default" data-toggle='modal' data-target='#layer-publish'>发布诗词</button><button class="btn btn-default">贡献翻译</button>
@@ -46,7 +44,7 @@
 						});
 			</script>";
 		// 点击搜索按钮的情况
-			$user_text = $_GET['text'];
+			
         $firstPage = '1';
         $curPage = '1';
         $limit = '10';
@@ -69,7 +67,7 @@
         $list = mysql_query($sql);
 
 		
-		$sql = "select * from poetries inner join poets on poetries.poet_id = poets.id where poets.name='$user_text' or title like'%$user_text%' or content like'%$user_text%' order by poetries.updated_at desc limit 10 ";
+		$sql = "select * from poetries inner join poets on poetries.poet_id = poets.id where poets.name='$user_text' or title like'%$user_text%' or content like'%$user_text%' order by poetries.updated_at desc limit 15 ";
 		$list = mysql_query($sql);
 		if (mysql_affected_rows() < 0) {
 			// loading动画
@@ -142,7 +140,7 @@
     	<div class="container">
     		<span id="fl"><a href="#">诗词地理</a></span>
     		<span id="fl"><a href="#">诗词大全</a></span>
-    		<span id="fr"><a href="../adbout.php">关于本站</a></span>
+    		<span id="fr"><a href="../about.php">关于本站</a></span>
     		<span id="fr"><a href="#">隐私权</a></span>
     	</div>
     </div>

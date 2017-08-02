@@ -19,9 +19,9 @@
 	<link href="./css/loaders.min.css" rel="stylesheet">
 	<script type="text/javascript" src="./js/jquery.min.js"></script>
 	<script type="text/javascript" src='./js/bootstrap.min.js'></script>
-	<script src="./js/loaders.css.js"></script>
+	<!-- <script src="./js/loaders.css.js"></script> -->
 	<link rel="stylesheet" type="text/css" href="./css/mystyle.css">
-	<script type="text/javascript" src="./js/index.js"></script>
+	<!-- <script type="text/javascript" src="./js/index.js"></script> -->
 <script >
 	$(document).ready(function(){
 		$("#submit").click(function(){
