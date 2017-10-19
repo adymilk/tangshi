@@ -127,7 +127,7 @@ if (isset($_GET['submit'])) {
 	                        <div class='modal-body text-right'>
 	                            <button class='btn btn-danger' type='submit' name='insert'>提交</button>
 	                            <button class='btn btn-primary' data-dismiss='modal'>取消</button>
-	                        </div>;
+	                        </div>
                         	
                         </form>
                     </div>
